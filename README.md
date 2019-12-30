@@ -13,6 +13,7 @@ Visible is a audio visualizer that takes properties from audio files and renders
 - Javscript
 - HTML
 - CSS
+- p5.js Library
 
 #### Challenges ####
 - Selecting the right audio properties in order to receive the right data to render on the canvas element

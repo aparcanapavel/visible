@@ -4,12 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="index.js"></script>
   <script src="p5/p5.min.js"></script>
   <script src="p5/addons/p5.sound.min.js"></script>
   <title>Visible</title>
+  <script src="index.js"></script>
+  <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-  <div>test</div>
+  <section class="modal-container" id="modal-container">
+    <div class="inner-modal" onclick="event.stopPropagation()">
+      <h3>Welcome!</h3>
+      <p>This is Visible, a simple web audio visualizer.</p>
+      <p>If you wish to change the look of the visualizer, simply change the color, shape, through the settings. You can also enter full screen!</p>
+
+      <div class="reference-links" >
+        <a 
+          id="github-source-code" 
+          href="https://github.com/aparcanapavel/visible" 
+          target="_blank" 
+          rel="noopener noreferrer">Source Code</a>
+        <a 
+          id="persona-page"
+          href="https://pavelaparcana.com/" 
+          target="_blank" 
+          rel="noopener noreferrer">Personal Page</a>
+        <span id="continue-button">Continue</span>
+      </div>
+      
+    </div>
+  </section>
+
+  <main class="main-container">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo autem consequuntur corporis? Officia incidunt eius nobis maxime minima tenetur porro, est, odit dicta illum culpa autem. Doloremque excepturi incidunt ut!</p>
+  </main>
 </body>
 </html>

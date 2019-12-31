@@ -1,0 +1,72 @@
+.main-container{
+  position: relative;
+  display: block;
+  background-color: gray;
+  z-index: 0;
+}
+
+.modal-container{
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.493);
+  z-index: 1;
+}
+
+.inner-modal{
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+  background-color: #282828;
+  padding: 30px 50px;
+  top: 200px;
+  border-radius: 5px;
+  color: whitesmoke;
+  z-index: 2;
+}
+
+.inner-modal h3{
+  font-size: 20px;
+  font-weight: 800;
+  padding-bottom: 10px;
+  text-align: center;
+  border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.inner-modal p {
+  padding: 10px;
+}
+
+.inner-modal .reference-links{
+  display: block;
+  position: relative;
+}
+
+.reference-links a,
+.reference-links span {
+  display: block;
+  width: 100%;
+  background-color: rgb(100, 100, 100);
+  border: 1px solid  rgb(235, 235, 235);
+  /* -webkit-appearance: searchfield;  */
+  margin: 8px 0px;
+  padding: 10px 0px;
+  padding-left: 8px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  text-align: center;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.reference-links a:hover,
+.reference-links span:hover {
+  background-color: rgb(90, 90, 90);
+}
+
+.reference-links a:active,
+.reference-links span:active {
+  background-color: rgb(83, 83, 83);
+}

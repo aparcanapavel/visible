@@ -1,44 +1,3 @@
-let welcomeScreen = true;
-let canvasContainer = null;
-let timeouts = [];
-let blueWave; //class
-
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("loaded");
-  const modalContainer = document.getElementById("modal-container");
-  const continueBtn = document.getElementById("continue-button");
-
-  [modalContainer, continueBtn].forEach(element => {
-    element.addEventListener("click", (e) => {
-      blueWave.waveSpeedChange(0.04, 100.0, 1000.0)
-      
-      timeouts.push(setTimeout(() => {
-        modalContainer.remove();
-      }), 300);
-    })
-  })
-
-});
-
-
-function setup() {
-  canvasContainer = createCanvas(windowWidth, windowHeight);
-  canvasContainer.parent('main-container');
-  blueWave = new IntroWave(TWO_PI, width, height);
-}
-
-function draw() {
-  background(10);
-  blueWave.calculateWave();
-  blueWave.render();
-}
-
-function windowResized(){
-  if(canvasContainer){
-    resizeCanvas(windowWidth, windowHeight);
-  }
-}
-// welcome screen wave
 class IntroWave {
   constructor(TWO_PI, width, height) {
     this.width = width;
@@ -54,13 +13,13 @@ class IntroWave {
     this.presetup();
   }
 
-  presetup() {
+  presetup(){
     this.w = this.width;
     this.dx = (this.TWO_PI / this.period) * this.xspacing; //deltaX
-    this.yvalues = new Array(floor(this.w / this.xspacing));
+    this.yvalues = new Array(floor(this.w / this.xspacing));  
   }
 
-  calculateWave() {
+  calculateWave(){
     this.theta += 0.02;
 
     // console.log("dx", dx)
@@ -71,7 +30,7 @@ class IntroWave {
     }
   }
 
-  render() {
+  render(){
     noStroke();
     fill(color(79, 244, 255));
 
@@ -91,3 +50,5 @@ class IntroWave {
     // amplitude = amp;
   }
 }
+
+// module.exports

@@ -43,20 +43,24 @@ class IntroWave {
 
   waveSpeedChange() {
     this.timer = setInterval(() => {
-      if (this.interval < 100.0) {
-        this.amplitude += 0.1;
-        this.period -= 90.0;
-        this.theta += 0.015;
-        this.interval += 0.11;
+      if (this.interval < 60.0) {
+        this.amplitude += 0.15;
+        this.period -= 95.0;
+        this.theta += 0.020;
+        this.interval += 0.15;
         console.log(this.interval);
       } else {
         welcomeScreen = false;
         clearInterval(this.timer);
       }
-    }, 0.0001);
+    }, 0.0000001);
   }
 
   fadeOut(){
     this.canvasEle.classList.add("fade-out");
+  }
+
+  fadeIn() {
+    this.canvasEle.classList.remove("fade-out");
   }
 }

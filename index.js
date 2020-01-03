@@ -6,6 +6,9 @@ let blueWave; //class component
 let home; // class component
 let song; // song element
 
+// sound properties
+let amplitude;
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM content loaded");
   const modalContainer = document.getElementById("modal-container");
@@ -14,13 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
   [modalContainer, continueBtn].forEach(element => {
     element.addEventListener("click", (e) => {
       blueWave.waveSpeedChange()
-      // debugger
       modalContainer.classList.add('fade');
       let timer = setTimeout(() => {
         modalContainer.remove();
         home = new Home();
         blueWave.fadeOut();
-      }, 550);
+      }, 100);
     })
   })
 
@@ -29,10 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function setup() {
   canvasContainer = createCanvas(windowWidth, windowHeight);
-  song = loadSound("./assets/lost-sky-dreams-pt-ii-feat-sara-skinner-ncs-release.mp3", isLoaded)
+  // song = loadSound("./assets/lost-sky-dreams-pt-ii-feat-sara-skinner-ncs-release.mp3", isLoaded)
+  song = loadSound("./assets/Witchcraft.m4a", isLoaded)
   canvasContainer.id("canvas-ele");
   canvasContainer.parent('main-container');
   blueWave = new IntroWave(TWO_PI, width, height);
+  amplitude = new p5.Amplitude();
+  visualizer = new AudioVisualizer();
 }
 
 function isLoaded() {
@@ -46,7 +51,12 @@ function draw() {
     blueWave.calculateWave();
     blueWave.render();
   } else {
-    console.log("render circle");
+    blueWave.fadeIn();
+    if(song.isPlaying()){
+      visualizer.ampRender(amplitude);
+    } else {
+      visualizer.preSet();
+    }
   }
 }
 

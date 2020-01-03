@@ -1,20 +1,26 @@
-let welcomeScreen = true;
+let welcomeScreen = true; //show modal with wave on refres/visit page
+let visualizer = false;
 let canvasContainer = null;
 let timeouts = [];
-let blueWave; //class
+let blueWave; //class component
+let home; // class component
+let song; // song element
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("loaded");
+  console.log("DOM content loaded");
   const modalContainer = document.getElementById("modal-container");
   const continueBtn = document.getElementById("continue-button");
 
   [modalContainer, continueBtn].forEach(element => {
     element.addEventListener("click", (e) => {
-      blueWave.waveSpeedChange(0.04, 100.0, 1000.0)
-      
-      timeouts.push(setTimeout(() => {
+      blueWave.waveSpeedChange()
+      // debugger
+      modalContainer.classList.add('fade');
+      let timer = setTimeout(() => {
         modalContainer.remove();
-      }), 300);
+        home = new Home();
+        blueWave.fadeOut();
+      }, 550);
     })
   })
 
@@ -23,71 +29,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function setup() {
   canvasContainer = createCanvas(windowWidth, windowHeight);
+  song = loadSound("./assets/lost-sky-dreams-pt-ii-feat-sara-skinner-ncs-release.mp3", isLoaded)
+  canvasContainer.id("canvas-ele");
   canvasContainer.parent('main-container');
   blueWave = new IntroWave(TWO_PI, width, height);
 }
 
+function isLoaded() {
+  console.log("song loaded");
+  song.setVolume(0.5);
+}
+
 function draw() {
   background(10);
-  blueWave.calculateWave();
-  blueWave.render();
+  if(welcomeScreen){
+    blueWave.calculateWave();
+    blueWave.render();
+  } else {
+    console.log("render circle");
+  }
 }
 
 function windowResized(){
   if(canvasContainer){
     resizeCanvas(windowWidth, windowHeight);
-  }
-}
-// welcome screen wave
-class IntroWave {
-  constructor(TWO_PI, width, height) {
-    this.width = width;
-    this.height = height;
-    this.TWO_PI = TWO_PI;
-    this.xspacing = 10;
-    this.w;
-    this.theta = 0.0;
-    this.amplitude = 30.0; // wave height
-    this.period = 1800.0; //repeat cycle
-    this.dx;
-    this.yvalues;
-    this.presetup();
-  }
-
-  presetup() {
-    this.w = this.width;
-    this.dx = (this.TWO_PI / this.period) * this.xspacing; //deltaX
-    this.yvalues = new Array(floor(this.w / this.xspacing));
-  }
-
-  calculateWave() {
-    this.theta += 0.02;
-
-    // console.log("dx", dx)
-    let x = this.theta;
-    for (let i = 0; i < this.yvalues.length; i++) {
-      this.yvalues[i] = sin(x) * this.amplitude;
-      x += this.dx;
-    }
-  }
-
-  render() {
-    noStroke();
-    fill(color(79, 244, 255));
-
-    for (let x = 0; x < this.yvalues.length; x++) {
-      ellipse(x * this.xspacing, this.height / 2 + this.yvalues[x], 16, 8);
-    }
-  }
-
-  waveSpeedChange(angVel, amp, period) {
-    for (let i = this.amplitude; i <= amp; i++) {
-      this.timer = setTimeout(() => {
-        this.amplitude += 1;
-      }, 1000);
-      console.log(this.amplitude);
-      // draw();
-    }
-    // amplitude = amp;
   }
 }

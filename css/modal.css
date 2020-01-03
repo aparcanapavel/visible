@@ -15,6 +15,12 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.493);
   z-index: 1;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.fade{
+  opacity: 0;
 }
 
 .inner-modal{

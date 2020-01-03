@@ -11,15 +11,17 @@ class IntroWave {
     this.dx;
     this.yvalues;
     this.presetup();
+    this.interval = 0;
+    this.canvasEle = document.getElementById("canvas-ele");
   }
 
-  presetup(){
+  presetup() {
     this.w = this.width;
     this.dx = (this.TWO_PI / this.period) * this.xspacing; //deltaX
-    this.yvalues = new Array(floor(this.w / this.xspacing));  
+    this.yvalues = new Array(floor(this.w / this.xspacing));
   }
 
-  calculateWave(){
+  calculateWave() {
     this.theta += 0.02;
 
     // console.log("dx", dx)
@@ -30,7 +32,7 @@ class IntroWave {
     }
   }
 
-  render(){
+  render() {
     noStroke();
     fill(color(79, 244, 255));
 
@@ -39,16 +41,22 @@ class IntroWave {
     }
   }
 
-  waveSpeedChange(angVel, amp, period) {
-    for (let i = this.amplitude; i <= amp; i++) {
-      this.timer = setTimeout(() => {
-        this.amplitude += 1;
-      }, 1000);
-      console.log(this.amplitude);
-      // draw();
-    }
-    // amplitude = amp;
+  waveSpeedChange() {
+    this.timer = setInterval(() => {
+      if (this.interval < 100.0) {
+        this.amplitude += 0.1;
+        this.period -= 90.0;
+        this.theta += 0.015;
+        this.interval += 0.11;
+        console.log(this.interval);
+      } else {
+        welcomeScreen = false;
+        clearInterval(this.timer);
+      }
+    }, 0.0001);
+  }
+
+  fadeOut(){
+    this.canvasEle.classList.add("fade-out");
   }
 }
-
-// module.exports

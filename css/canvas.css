@@ -1,0 +1,13 @@
+body{
+  background-color: black;
+}
+
+#canvas-ele{
+  opacity: 1;
+  transition: opacity 2s;
+}
+
+#canvas-ele.fade-out{
+  opacity: 0.03;
+  z-index: 0;
+}

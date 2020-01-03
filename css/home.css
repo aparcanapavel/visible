@@ -1,0 +1,45 @@
+#section-container{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.781);
+  color: white;
+  opacity: 0;
+  transition: opacity 3s;
+}
+
+#section-container.fade-in{
+  opacity: 1;
+}
+
+#side-bar{
+  position: relative;
+  display: block;
+  height: 100%;
+  background-color: black;
+  width: 20%;
+  padding: 20px;
+}
+
+#side-bar h3{
+  text-align: center;
+  border-bottom: 1px solid white;
+}
+
+#play-pause-buttons {
+  position: absolute;
+  bottom: 50px;
+  font-size: 35px;
+  min-width: 35px;
+  min-height: 35px;
+  text-align: center;
+}
+
+#play-pause-buttons:active{
+  color: gray;
+  font-size: 33px;
+}

@@ -66,13 +66,11 @@ function setup() {
 }
 
 function isLoaded() {
-  console.log("song loaded");
   song.setVolume(0.5);
 }
 
 function draw() {
   let spectrum = fft.analyze();
-  // console.log(spectrum);
   background(10);
   if(welcomeScreen){
     blueWave.calculateWave();

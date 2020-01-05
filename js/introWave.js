@@ -48,7 +48,7 @@ class IntroWave {
         this.period -= 95.0;
         this.theta += 0.025;
         this.interval += 0.18;
-        console.log(this.interval);
+        // console.log(this.interval);
       } else {
         welcomeScreen = false;
         clearInterval(this.timer);

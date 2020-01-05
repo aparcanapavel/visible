@@ -20,9 +20,6 @@ class AudioVisualizer {
   }
 
   ampRender(amplitude, spectrum) {
-    // let volume = amplitude.getLevel();
-    // let diam = 200;
-
     noStroke();
     translate(width / 2, height / 2);
     
@@ -30,7 +27,7 @@ class AudioVisualizer {
       let bassThump = this.bassThumps[j];
       bassThump.expand();
       bassThump.renderThump();
-      if (bassThump.fade <= 0){
+      if (bassThump.diam >= 600){
         this.bassThumps.splice(j, 1);
       }
     }
@@ -44,12 +41,13 @@ class AudioVisualizer {
         // console.log("freq? :", amp.freq())
         this.bassThumps.push(new BassThump());
         this.circleThump();
-      }
-      let x = radius * cos(angle);
-      let y = radius * sin(angle);
+      } else {
+        let x = radius * cos(angle);
+        let y = radius * sin(angle);
 
-      stroke(i, 255, 255);
-      line(0, 0, x, y);
+        stroke(i, 255, 255);
+        line(0, 0, x, y);
+      }
     }
     fill(79, 244, 255);
     ellipse(0, 0, this.diam);

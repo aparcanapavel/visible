@@ -8,8 +8,8 @@
   left: 0px;
   background-color: rgba(0, 0, 0, 0.166);
   color: white;
-  opacity: 1;
-  transition: opacity 0.5s;
+  opacity: 0;
+  transition: opacity 5s;
 }
 
 #section-container.fade-in{
@@ -36,19 +36,83 @@
 }
 
 #contact-links{
-  position: relative;
+  position: absolute;
   display: block;
+  top: 40%;
+  font-size: 20px;
+  box-sizing: border-box;
 }
 
 #contact-links a {
-  display: block;
-  /* font-family: 'Varela', sans-serif; */
+  display: inline-block;
+  padding: 5px 0px;
+  font-size: 25px;
 }
 
+#contact-links li:first-child a,
+#contact-links li:nth-child(2) a{
+  font-size: 30px;
+}
+
+#contact-links li {
+  margin: 5px 0px;
+  text-align: center;
+  background-color: black;
+}
+
+#contact-links li span{
+  font-size: 15px;
+  visibility: hidden;
+  background-color: whitesmoke;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  left: 40px;
+  border:1px solid gray;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+#contact-links li span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent whitesmoke transparent transparent;
+}
+
+#contact-links li:hover span{
+  visibility: visible;
+  opacity: 1;
+}
+
+#song-info {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+#song-info h4{
+  overflow-x: scroll;
+  white-space: nowrap;
+  font-size: 18px;
+}
+
+#song-info h4::-webkit-scrollbar{
+  display: none;
+}
+
+#song-info p {
+  color: gray;
+  margin-bottom: 10px;
+}
 
 #play-pause-buttons {
-  position: absolute;
-  bottom: 50px;
   font-size: 35px;
   min-width: 35px;
   min-height: 35px;

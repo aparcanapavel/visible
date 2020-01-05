@@ -6,7 +6,7 @@ class BassThump {
 
   expand() {
     if (this.diam < 600) {
-      this.diam += 3;
+      this.diam += 4;
       this.fade -= 2;
     } else {
       this.diam = 200;

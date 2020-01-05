@@ -2,6 +2,29 @@ class Home{
   constructor(){
     this.render();
     this.isPlaying = false;
+    this.scroll = 0;
+  }
+  resetScroll(){
+    const songTitle = document.getElementById("song-title");
+    songTitle.scrollTo(0, 0);
+    setTimeout(() => {
+      this.titleScroll();
+    }, 1500);
+  }
+
+  titleScroll(){
+    const songTitle = document.getElementById("song-title");
+    const titleWidth = songTitle.scrollWidth;
+    this.titleInterval = setInterval(() => {
+      if (this.scroll < titleWidth) {
+        this.scroll++;
+        songTitle.scrollTo(songTitle.scrollLeft + 1, 0);
+      } else {
+        this.scroll = 0;
+        this.resetScroll();
+        clearInterval(this.titleInterval);
+      }
+    }, 40);
   }
 
   render(){
@@ -11,48 +34,57 @@ class Home{
     const asideEl = document.createElement("aside");
     asideEl.setAttribute("id", "side-bar");
 
-    const sideBarTitle1 = document.createElement("h3");
-    const sideBarTitle2 = document.createElement("h4");
-
-    sideBarTitle1.innerHTML = "Getting Started";
-    sideBarTitle2.innerHTML = "Settings";
-
-    const sideBarParagraph = document.createElement("p");
-    sideBarParagraph.innerHTML = "- Click play to start the visuals!";
-
     // quick links
-    const sideBarContact = document.createElement("div");
-    sideBarContact.setAttribute("id", "contact-links");
     const contactList = document.createElement("ul");
+    contactList.setAttribute("id", "contact-links");
     //Linkedin
     const linkedLi = document.createElement("li");
     const linkedIn = document.createElement("a");
+    const toolTip1 = document.createElement("span");
     linkedIn.setAttribute("class", "fab fa-linkedin");
     linkedIn.setAttribute("href", "https://www.linkedin.com/in/pavel-aparcana/");
-    const linkedInText = document.createElement("i");
-    linkedInText.innerHTML = "pavel-aparcana";
+    toolTip1.innerHTML = "LinkedIn"
     linkedLi.append(linkedIn);
-    linkedLi.append(linkedInText);
+    linkedLi.append(toolTip1);
     contactList.append(linkedLi);
     //Git
     const gitHubLi = document.createElement("li");
     const gitHub = document.createElement("a");
+    const toolTip2 = document.createElement("span");
     gitHub.setAttribute("class", "fab fa-github-square");
     gitHub.setAttribute("href", "https://github.com/aparcanapavel");
-    gitHub.innerHTML = "aparcanapavel";
-    sideBarContact.append(gitHub);
+    toolTip2.innerHTML = "GitHub"
+    gitHubLi.append(gitHub);
+    gitHubLi.append(toolTip2);
+    contactList.append(gitHubLi);
     //personal website
+    const websiteLi = document.createElement("li");
     const website = document.createElement("a");
+    const toolTip3 = document.createElement("span");
     website.setAttribute("class", "fas  fa-address-card");
     website.setAttribute("href", "https://pavelaparcana.com/");
-    website.innerHTML = "Personal Website";
-    sideBarContact.append(website);
+    toolTip3.innerHTML = "Website"
+    websiteLi.append(website);
+    websiteLi.append(toolTip3);
+    contactList.append(websiteLi);
 
 
+    // MUSIC PLAYER
+    const songInfo = document.createElement("div");
+    songInfo.setAttribute("id", "song-info");
+    const songTitle = document.createElement("h4");
+    songTitle.setAttribute("id", "song-title");
+    songTitle.innerHTML = "Dreams pt.II (feat. Sarah Skinner)[NCS Release]";
+    
+    const songArtist = document.createElement("p");
+    songArtist.innerHTML = "Lost Sky";
+    songInfo.append(songTitle);
+    songInfo.append(songArtist);
     // play pause buttons
     const playButton = document.createElement("i");
     playButton.setAttribute("class", "far fa-play-circle");
     playButton.setAttribute("id", 'play-pause-buttons');
+    songInfo.append(playButton);
 
     playButton.addEventListener("click", () => {
       if(this.isPlaying){
@@ -69,15 +101,15 @@ class Home{
     })
     
     //putting it all together for render;
-    asideEl.append(sideBarTitle1);
-    asideEl.append(sideBarParagraph);
-    asideEl.append(sideBarContact);
-    asideEl.append(playButton);
+    asideEl.append(contactList);
+    asideEl.append(songInfo);
     sectionContainer.append(asideEl);
     mainEl.append(sectionContainer);
     
-    // setTimeout(() => {
-    //   sectionContainer.classList.add("fade-in");
-    // }, 100);
+    setTimeout(() => {
+      sectionContainer.classList.add("fade-in");
+      this.titleScroll();
+    }, 1500);
+
   }
 }

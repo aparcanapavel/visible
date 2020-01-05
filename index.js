@@ -8,6 +8,7 @@ let song; // song element
 
 // sound properties
 let amplitude;
+let fft; //p5 property that allows me to use the full range of frequencies.
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM content loaded");
@@ -32,12 +33,16 @@ document.addEventListener("DOMContentLoaded", () => {
 function setup() {
   canvasContainer = createCanvas(windowWidth, windowHeight);
   // song = loadSound("./assets/lost-sky-dreams-pt-ii-feat-sara-skinner-ncs-release.mp3", isLoaded)
-  song = loadSound("./assets/Witchcraft.m4a", isLoaded)
+  song = loadSound("./assets/lost-sky-dreams-pt-ii.mp3", isLoaded)
   canvasContainer.id("canvas-ele");
   canvasContainer.parent('main-container');
   blueWave = new IntroWave(TWO_PI, width, height);
   amplitude = new p5.Amplitude();
   visualizer = new AudioVisualizer();
+  fft = new p5.FFT(0, 128);
+  if(!welcomeScreen){
+    angleMode(DEGREES);
+  }
 }
 
 function isLoaded() {
@@ -46,6 +51,8 @@ function isLoaded() {
 }
 
 function draw() {
+  let spectrum = fft.analyze();
+  // console.log(spectrum);
   background(10);
   if(welcomeScreen){
     blueWave.calculateWave();
@@ -53,7 +60,7 @@ function draw() {
   } else {
     blueWave.fadeIn();
     if(song.isPlaying()){
-      visualizer.ampRender(amplitude);
+      visualizer.ampRender(amplitude, spectrum);
     } else {
       visualizer.preSet();
     }

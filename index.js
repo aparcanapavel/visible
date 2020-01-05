@@ -4,14 +4,14 @@ let canvasContainer = null;
 let timeouts = [];
 let blueWave; //class component
 let home; // class component
-let song; // song element
+let song = null; // song element
 
 // sound properties
 let amplitude;
 let fft; //p5 property that allows me to use the full range of frequencies.
+let freqOsc; //attempt to get current frequency
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM content loaded");
   const modalContainer = document.getElementById("modal-container");
   const continueBtn = document.getElementById("continue-button");
 
@@ -26,8 +26,26 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 100);
     })
   })
-
+  
 });
+
+let mouseTimer;
+let sidebar;
+
+document.onmousemove = function() {
+  if (song && song.isPlaying()) {
+    sidebar = document.getElementById("side-bar");
+    sidebar.className = "";
+    clearTimeout(mouseTimer);
+    
+    mouseTimer = setTimeout(() => {
+      sidebar.classList.add("fade");
+      // console.log("fade sidebar out");
+    }, 3000);
+  } else if(sidebar){
+    sidebar.className = "";
+  }
+};
 
 
 function setup() {
@@ -39,7 +57,9 @@ function setup() {
   blueWave = new IntroWave(TWO_PI, width, height);
   amplitude = new p5.Amplitude();
   visualizer = new AudioVisualizer();
-  fft = new p5.FFT(0, 128);
+  fft = new p5.FFT(0.7, 128);
+  freqOsc = new p5.Oscillator();
+
   if(!welcomeScreen){
     angleMode(DEGREES);
   }

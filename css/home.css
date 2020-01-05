@@ -6,10 +6,10 @@
   z-index: 1;
   top: 0px;
   left: 0px;
-  background-color: rgba(0, 0, 0, 0.16);
+  background-color: rgba(0, 0, 0, 0.166);
   color: white;
-  opacity: 0;
-  transition: opacity 1s;
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 
 #section-container.fade-in{
@@ -23,12 +23,28 @@
   background-color: rgba(0, 0, 0, 0.11);
   width: 20%;
   padding: 20px;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+#side-bar.fade{
+  opacity: 0.1;
 }
 
 #side-bar h3{
   text-align: center;
   border-bottom: 1px solid white;
 }
+
+#contact-links{
+  position: relative;
+  display: block;
+}
+
+#contact-links a {
+  display: block;
+  /* font-family: 'Varela', sans-serif; */
+}
+
 
 #play-pause-buttons {
   position: absolute;

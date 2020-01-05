@@ -1,54 +1,57 @@
 class AudioVisualizer {
   constructor(){
-    console.log("visualizer ready");
     this.canvasEle = document.getElementById("canvas-ele");
     this.width = width / 128;
+    this.diam = 200;
+    this.bassThumps = [];
   }
   
   preSet(){
     fill(color(79, 244, 255));
 
-    ellipse(width / 2, height / 2, 100, 100);
+    ellipse(width / 2, height / 2, 200, 200);
   }
 
-  // ampRender(amplitude){
-  //   let volume = amplitude.getLevel();
-
-  //   let mappedVol = map(volume, 0, 0.5, 100, 300);
-
-  //   ellipse(width / 2, height / 2, mappedVol, mappedVol);
-  // }
+  circleThump(){
+    this.timer = setTimeout(() => {
+      this.diam = 200;
+    }, 1);
+    this.diam = 215;
+  }
 
   ampRender(amplitude, spectrum) {
     // let volume = amplitude.getLevel();
+    // let diam = 200;
 
-    // let mappedVol = map(volume, 0, 0.5, 100, 300);
-
-    // ellipse(width / 2, height / 2, mappedVol, mappedVol);
-    // console.log(spectrum);
     noStroke();
     translate(width / 2, height / 2);
-
-    // stroke(255);
-    // beginShape();
+    
+    for(let j = 0; j < this.bassThumps.length; j++){
+      let bassThump = this.bassThumps[j];
+      bassThump.expand();
+      bassThump.renderThump();
+      if (bassThump.fade <= 0){
+        this.bassThumps.splice(j, 1);
+      }
+    }
+    
     for(let i = 0; i < spectrum.length; i++){
       let amp = spectrum[i];
       let angle = map(i, 0, spectrum.length, 0 , 360);
       let radius = map(amp, 0, 256, 100, 250);
-      // let yVal = map(amp, 0, 256, height, 0);
-      // if(amp > 200){
-      //   ellipse(width / 2, height / 2, mappedVol, mappedVol);
-      // }
+      
+      if (amp > 252) {
+        // console.log("freq? :", amp.freq())
+        this.bassThumps.push(new BassThump());
+        this.circleThump();
+      }
       let x = radius * cos(angle);
       let y = radius * sin(angle);
-      // line(i * this.width, height, i * this.width, yVal);
-      // vertex(x, y)
+
       stroke(i, 255, 255);
       line(0, 0, x, y);
     }
-
-    // endShape();
-    // stroke(256);
-    // noFill();
+    fill(79, 244, 255);
+    ellipse(0, 0, this.diam);
   }
 }

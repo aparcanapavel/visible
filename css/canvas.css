@@ -1,10 +1,6 @@
-body{
-  background-color: rgb(34, 34, 34);
-}
-
 #canvas-ele{
   opacity: 1;
-  transition: opacity 1s;
+  transition: opacity 1.5s;
 }
 
 #canvas-ele.fade-out{

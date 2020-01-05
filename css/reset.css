@@ -17,6 +17,9 @@ span, article, footer, time, small {
   /* font-family: 'Raleway', sans-serif; */
   font-family: 'Varela', sans-serif;
 }
+body{
+  background-color: black;
+}
 
 ul {
   list-style: none;

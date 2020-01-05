@@ -38,7 +38,6 @@ class AudioVisualizer {
       let radius = map(amp, 0, 256, 100, 250);
       
       if (amp > 252) {
-        // console.log("freq? :", amp.freq())
         this.bassThumps.push(new BassThump());
         this.circleThump();
       } else {

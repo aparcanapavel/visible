@@ -16,7 +16,7 @@ class AudioVisualizer {
     this.timer = setTimeout(() => {
       this.diam = 200;
     }, 1);
-    this.diam = 215;
+    this.diam = 213;
   }
 
   ampRender(amplitude, spectrum) {
@@ -27,7 +27,7 @@ class AudioVisualizer {
       let bassThump = this.bassThumps[j];
       bassThump.expand();
       bassThump.renderThump();
-      if (bassThump.diam >= 600){
+      if (bassThump.fade <= 0){
         this.bassThumps.splice(j, 1);
       }
     }
@@ -37,9 +37,9 @@ class AudioVisualizer {
       let angle = map(i, 0, spectrum.length, 0 , 360);
       let radius = map(amp, 0, 256, 100, 250);
       
-      if (amp > 252) {
+      if (amp > 253) {
         this.bassThumps.push(new BassThump());
-        this.circleThump();
+        // this.circleThump();
       } else {
         let x = radius * cos(angle);
         let y = radius * sin(angle);

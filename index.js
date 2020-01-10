@@ -60,9 +60,11 @@ function setup() {
   fft = new p5.FFT(0.7, 128);
   freqOsc = new p5.Oscillator();
 
-  if(!welcomeScreen){
-    angleMode(DEGREES);
-  }
+  // if(!welcomeScreen){
+  //   angleMode(DEGREES);
+  // }
+  fill(79, 244, 255);
+  ellipse(0, 0, 200);
 }
 
 function isLoaded() {
@@ -77,11 +79,11 @@ function draw() {
     blueWave.render();
   } else {
     blueWave.fadeIn();
-    if(song.isPlaying()){
+    // if(song.isPlaying()){
       visualizer.ampRender(amplitude, spectrum);
-    } else {
-      visualizer.preSet();
-    }
+    // } else {
+    //   visualizer.preSet();
+    // }
   }
 }
 

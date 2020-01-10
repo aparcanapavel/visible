@@ -38,11 +38,15 @@ class Home{
     const contactList = document.createElement("ul");
     contactList.setAttribute("id", "contact-links");
     //Linkedin
+    target = "_blank"
+    rel = "noopener noreferrer"
     const linkedLi = document.createElement("li");
     const linkedIn = document.createElement("a");
     const toolTip1 = document.createElement("span");
     linkedIn.setAttribute("class", "fab fa-linkedin");
     linkedIn.setAttribute("href", "https://www.linkedin.com/in/pavel-aparcana/");
+    linkedIn.setAttribute("target", "_blank");
+    linkedIn.setAttribute("rel", "noopener noreferrer");
     toolTip1.innerHTML = "LinkedIn"
     linkedLi.append(linkedIn);
     linkedLi.append(toolTip1);
@@ -53,6 +57,8 @@ class Home{
     const toolTip2 = document.createElement("span");
     gitHub.setAttribute("class", "fab fa-github-square");
     gitHub.setAttribute("href", "https://github.com/aparcanapavel");
+    github.setAttribute("target", "_blank");
+    github.setAttribute("rel", "noopener noreferrer");
     toolTip2.innerHTML = "GitHub"
     gitHubLi.append(gitHub);
     gitHubLi.append(toolTip2);
@@ -63,6 +69,8 @@ class Home{
     const toolTip3 = document.createElement("span");
     website.setAttribute("class", "fas  fa-address-card");
     website.setAttribute("href", "https://pavelaparcana.com/");
+    website.setAttribute("target", "_blank");
+    website.setAttribute("rel", "noopener noreferrer");
     toolTip3.innerHTML = "Website"
     websiteLi.append(website);
     websiteLi.append(toolTip3);

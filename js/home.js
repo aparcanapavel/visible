@@ -38,8 +38,6 @@ class Home{
     const contactList = document.createElement("ul");
     contactList.setAttribute("id", "contact-links");
     //Linkedin
-    target = "_blank"
-    rel = "noopener noreferrer"
     const linkedLi = document.createElement("li");
     const linkedIn = document.createElement("a");
     const toolTip1 = document.createElement("span");
@@ -57,8 +55,8 @@ class Home{
     const toolTip2 = document.createElement("span");
     gitHub.setAttribute("class", "fab fa-github-square");
     gitHub.setAttribute("href", "https://github.com/aparcanapavel");
-    github.setAttribute("target", "_blank");
-    github.setAttribute("rel", "noopener noreferrer");
+    gitHub.setAttribute("target", "_blank");
+    gitHub.setAttribute("rel", "noopener noreferrer");
     toolTip2.innerHTML = "GitHub"
     gitHubLi.append(gitHub);
     gitHubLi.append(toolTip2);

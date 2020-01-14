@@ -91,6 +91,8 @@ class Home{
     playButton.setAttribute("class", "far fa-play-circle");
     playButton.setAttribute("id", 'play-pause-buttons');
     songInfo.append(playButton);
+    //import
+    const songUpload = document.createElement("input");
 
     playButton.addEventListener("click", () => {
       if(this.isPlaying){

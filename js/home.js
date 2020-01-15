@@ -113,11 +113,11 @@ class Home{
     importButton.setAttribute("class", "fas fa-upload");
     importButton.setAttribute("id", "import-button");
     importButton.setAttribute("for", "song-upload-input");
+    importButton.setAttribute("title", "upload a song");
     
     songInfo.append(songUpload);
     songInfo.append(importButton);
     songUpload.addEventListener("change", (event) => {
-      songLoaded = false;
 
       const importedSong = event.currentTarget.files[0];
       this.setSongData(importedSong);

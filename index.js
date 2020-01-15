@@ -2,11 +2,9 @@ let welcomeScreen = true; //show modal with wave on refres/visit page
 let visualizer = false;
 let canvasContainer = null;
 let timeouts = [];
-let songLoaded;
 let blueWave; //class component
 let home; // class component
 let song = null; // song element
-let loader;
 // sound properties
 let amplitude;
 let fft; //p5 property that allows me to use the full range of frequencies.
@@ -41,8 +39,8 @@ document.onmousemove = function() {
     
     mouseTimer = setTimeout(() => {
       sidebar.classList.add("fade");
-      // console.log("fade sidebar out");
     }, 3000);
+
   } else if(sidebar){
     sidebar.className = "";
   }
@@ -51,10 +49,8 @@ document.onmousemove = function() {
 
 function setup() {
   canvasContainer = createCanvas(windowWidth, windowHeight);
-  // song = loadSound("./assets/lost-sky-dreams-pt-ii-feat-sara-skinner-ncs-release.mp3", isLoaded)
   song = loadSound("./assets/lost-sky-dreams-pt-ii.mp3", isLoaded)
   
-  console.log(songLoaded);
   canvasContainer.id("canvas-ele");
   canvasContainer.parent('main-container');
   blueWave = new IntroWave(TWO_PI, width, height);
@@ -62,7 +58,7 @@ function setup() {
   visualizer = new AudioVisualizer();
   fft = new p5.FFT(0.7, 128);
   freqOsc = new p5.Oscillator();
-  loader = new Loader();
+
   // if(!welcomeScreen){
   //   angleMode(DEGREES);
   // }
@@ -71,8 +67,6 @@ function setup() {
 }
 
 function isLoaded() {
-  songLoaded = true;
-  console.log(songLoaded);
   song.setVolume(0.5);
 }
 
@@ -85,7 +79,6 @@ function draw() {
   } else {
     blueWave.fadeIn();
     // if(songLoaded){
-      loader.loaded();
       visualizer.ampRender(amplitude, spectrum);
     // } else {
       // loader.loading();

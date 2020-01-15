@@ -119,8 +119,23 @@
   text-align: center;
 }
 
-#play-pause-buttons:active{
+#play-pause-buttons:active,
+#import-button:active{
   color: gray;
   font-size: 33px;
 }
 
+#song-upload-input{
+  visibility: hidden;
+}
+
+#import-button{
+  display: block;
+  font-size: 25px;
+  padding: 5px;
+}
+
+#import-button:active{
+  color: gray;
+  font-size: 23px;
+}

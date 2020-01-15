@@ -3,6 +3,8 @@ class Home{
     this.render();
     this.isPlaying = false;
     this.scroll = 0;
+    this.artist = null;
+    this.songName = null;
   }
   resetScroll(){
     const songTitle = document.getElementById("song-title");
@@ -25,6 +27,15 @@ class Home{
         clearInterval(this.titleInterval);
       }
     }, 40);
+  }
+
+  setSongData(song){
+    const name = song.name;
+    const songTitle = document.getElementById("song-title");
+    const songArtist = document.getElementById("song-artist");
+    songTitle.innerHTML = "";
+    songArtist.innerHTML = "";
+    songTitle.innerHTML = name;
   }
 
   render(){
@@ -80,10 +91,11 @@ class Home{
     songInfo.setAttribute("id", "song-info");
     const songTitle = document.createElement("h4");
     songTitle.setAttribute("id", "song-title");
-    songTitle.innerHTML = "Dreams pt.II (feat. Sarah Skinner)[NCS Release]";
+    songTitle.innerHTML = this.songName || "Dreams pt.II (feat. Sarah Skinner)[NCS Release]";
     
     const songArtist = document.createElement("p");
-    songArtist.innerHTML = "Lost Sky";
+    songArtist.setAttribute("id", "song-artist");
+    songArtist.innerHTML = this.artist || "Lost Sky";
     songInfo.append(songTitle);
     songInfo.append(songArtist);
     // play pause buttons
@@ -91,8 +103,34 @@ class Home{
     playButton.setAttribute("class", "far fa-play-circle");
     playButton.setAttribute("id", 'play-pause-buttons');
     songInfo.append(playButton);
-    //import
+
+    //import logic
     const songUpload = document.createElement("input");
+    songUpload.setAttribute("type", "file");
+    songUpload.setAttribute("id", "song-upload-input");
+    //import button
+    const importButton = document.createElement("label");
+    importButton.setAttribute("class", "fas fa-upload");
+    importButton.setAttribute("id", "import-button");
+    importButton.setAttribute("for", "song-upload-input");
+    
+    songInfo.append(songUpload);
+    songInfo.append(importButton);
+    songUpload.addEventListener("change", (event) => {
+      songLoaded = false;
+
+      const importedSong = event.currentTarget.files[0];
+      this.setSongData(importedSong);
+  
+      const fileReader = new FileReader();
+      fileReader.onloadend = () => {
+        song = loadSound(fileReader.result, isLoaded);
+      }
+
+      if(importedSong) {
+        fileReader.readAsDataURL(importedSong);
+      }
+    })
 
     playButton.addEventListener("click", () => {
       if(this.isPlaying){

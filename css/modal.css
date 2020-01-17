@@ -49,6 +49,10 @@
   padding: 10px;
 }
 
+.inner-modal > p:nth-child(4){
+  font-size: 13px;
+}
+
 .inner-modal .reference-links{
   display: block;
   position: relative;

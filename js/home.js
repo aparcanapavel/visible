@@ -120,6 +120,11 @@ class Home{
     songUpload.addEventListener("change", (event) => {
 
       const importedSong = event.currentTarget.files[0];
+
+      if(importedSong.type.split("/")[0] !== "audio"){
+        alert("please only upload mp3 files");
+        return;
+      }
       this.setSongData(importedSong);
   
       const fileReader = new FileReader();

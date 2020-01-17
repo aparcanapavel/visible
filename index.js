@@ -32,6 +32,7 @@ let mouseTimer;
 let sidebar;
 
 document.onmousemove = function() {
+  document.body.style.cursor = "default"
   if (song && song.isPlaying()) {
     sidebar = document.getElementById("side-bar");
     sidebar.className = "";
@@ -39,12 +40,29 @@ document.onmousemove = function() {
     
     mouseTimer = setTimeout(() => {
       sidebar.classList.add("fade");
+      document.body.style.cursor = "none"
     }, 3000);
 
   } else if(sidebar){
     sidebar.className = "";
   }
 };
+
+
+document.addEventListener("keyup", (e) => {
+  if (song && e.keyCode === 32) {
+    if (song.isPlaying()) {
+      // song.pause();
+      home.pauseSong();
+    } else{
+      if(welcomeScreen) return;
+      // song.play();
+      home.playSong();
+    }
+  }
+})
+
+
 
 
 function setup() {

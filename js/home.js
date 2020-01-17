@@ -38,6 +38,20 @@ class Home{
     songTitle.innerHTML = name;
   }
 
+  pauseSong() {
+    song.pause();
+    this.isPlaying = false;
+    this.playButton.className = "";
+    this.playButton.setAttribute("class", "far fa-play-circle");
+  }
+
+  playSong() {
+    song.play();
+    this.isPlaying = true;
+    this.playButton.className = "";
+    this.playButton.setAttribute("class", "far fa-pause-circle");
+  }
+
   render(){
     const mainEl = document.getElementById("main-container"); // main
     const sectionContainer = document.createElement("section"); // inner section
@@ -99,10 +113,10 @@ class Home{
     songInfo.append(songTitle);
     songInfo.append(songArtist);
     // play pause buttons
-    const playButton = document.createElement("i");
-    playButton.setAttribute("class", "far fa-play-circle");
-    playButton.setAttribute("id", 'play-pause-buttons');
-    songInfo.append(playButton);
+    this.playButton = document.createElement("i");
+    this.playButton.setAttribute("class", "far fa-play-circle");
+    this.playButton.setAttribute("id", 'play-pause-buttons');
+    songInfo.append(this.playButton);
 
     //import logic
     const songUpload = document.createElement("input");
@@ -137,17 +151,11 @@ class Home{
       }
     })
 
-    playButton.addEventListener("click", () => {
+    this.playButton.addEventListener("click", () => {
       if(this.isPlaying){
-        song.pause();
-        this.isPlaying = false;
-        playButton.className = "";
-        playButton.setAttribute("class", "far fa-play-circle");
+        this.pauseSong();
       } else {
-        song.play();
-        this.isPlaying = true;
-        playButton.className = "";
-        playButton.setAttribute("class", "far fa-pause-circle");
+        this.playSong();
       }
     })
     

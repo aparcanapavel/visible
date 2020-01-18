@@ -37,7 +37,7 @@ class AudioVisualizer {
       let angle = map(i, 0, spectrum.length, 0 , 360);
       let radius = map(amp, 0, 256, 100, 250);
       
-      if (amp > 253) {
+      if (amp > 252.5) {
         this.bassThumps.push(new BassThump());
         // this.circleThump();
       } else {

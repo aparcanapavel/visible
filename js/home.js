@@ -139,6 +139,8 @@ class Home{
         alert("please only upload mp3 files");
         return;
       }
+      // song.stop();
+      this.pauseSong();
       this.setSongData(importedSong);
   
       const fileReader = new FileReader();

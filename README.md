@@ -89,7 +89,7 @@ In order to acheive the transition from one page to the next, I had to work with
   }
   ```
 
-- What a bout the blue wave? P5.js has a `draw()` that runs continuously. Within the `draw()` method, I used a conditional to continuously run a different render function from different classes. 
+- What a bout the blue wave? P5.js has a `draw()` function that runs continuously. Within the `draw()` function, I used a conditional to continuously run a different render function from different classes. 
   ```js
   // #index.js
   if(welcomeScreen){

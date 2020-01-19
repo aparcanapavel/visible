@@ -23,7 +23,17 @@ Visible is an audio visualizer that takes properties from audio files, and rende
 
 ### Wireframes ###
 ![Welcome-Screen](https://github.com/aparcanapavel/visible/blob/master/assets/welcome.png?raw=true)
-- Upon Visiting the page, users will be greeted with a welcome modal
+- Upon Visiting the page, users will be greeted with a welcome modal containing instructions as to how to get to the second page.
+- Visitors can look at the source code
+- Visitors can view my portfolio site.
+
+![Visualizer-Screen](https://github.com/aparcanapavel/visible/blob/master/assets/visualizer.png?raw=true)
+- At the second page, visitors can then:
+  * click play to listen to *Dreams pt. II (feat. Sarah Skinner)[NoCopyrightSounds Release]* by ***Lost Sky***.
+  * Upload their own music file through the file upload button bellow the play icon.
+  * Visit my LinkedIn page
+  * View the source code
+  * Visit my portfolio page.
 
 ### Timeline ###
 #### Day 1 ####
@@ -43,4 +53,4 @@ Visible is an audio visualizer that takes properties from audio files, and rende
 - Finish rendering desired shape
 - Finish the transitions. 
 - Add auto text scroll on song name.
-- Host on a website
+- Host on github

@@ -39,7 +39,7 @@ Visible is an audio visualizer that takes properties from audio files, and rende
 * Once the user clicks play, The visualizer will begin analyzing the sound and render different line heights.
 
 
-#### Page Transition ####
+### Page Transition ###
 In order to acheive the transition from one page to the next, I had to work with asynchronous timeouts and render methods within class constructors. 
 
 - I had to set event listeners to the two elements that I wanted to cause the trigger between pages, the modal background and the continue button:

@@ -1,19 +1,19 @@
 ## VISIBLE ##
 
-Visible is a audio visualizer that takes properties from audio files and renders a blue shape based on the audio properties.
+Visible is an audio visualizer that takes properties from audio files, and renders shapes based on the audio properties.
 
 [live page](https://pavelaparcana.com/visible/)
-
-### Features ###
-- Audio Visualizer
-- Users are able to choose a song from their files(on development)
-- Full Screen
 
 ### Technologies and Libraries ###
 - Javscript
 - HTML
 - CSS
 - p5.js Library
+
+### Features ###
+- Audio Visualizer
+- Users are able to choose a song from their files(on development)
+- Full Screen
 
 #### Challenges ####
 - Selecting the right audio properties in order to receive the right data to render on the canvas element

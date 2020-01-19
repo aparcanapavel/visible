@@ -16,9 +16,10 @@ Visible is an audio visualizer that takes properties from audio files, and rende
 - Full Screen
 
 #### Challenges ####
-- Selecting the right audio properties in order to receive the right data to render on the canvas element
 - Becoming familiar with Canvas and all of the element's properties.
 - Learning the basics of p5.js library.
+- Learning how p5.js interacts with canvas elements.
+- Selecting the right audio properties in order to receive the right data to render on the canvas element
 - Reviewing trigonometry to render the correct shapes.
 
 ### Wireframes ###

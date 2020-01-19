@@ -96,11 +96,7 @@ function draw() {
     blueWave.render();
   } else {
     blueWave.fadeIn();
-    // if(songLoaded){
-      visualizer.ampRender(amplitude, spectrum);
-    // } else {
-      // loader.loading();
-    // }
+    visualizer.ampRender(amplitude, spectrum);
   }
 }
 

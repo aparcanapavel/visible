@@ -57,3 +57,44 @@ In order to acheive the transition from one page to the next, I had to work with
       })
     })
   ```
+- In the Home class, I had to create elements in order to render the correct HTML:
+  ```js
+  // #js/home.js
+  class Home{
+    constructor(){
+      this.render();
+      //...
+    }
+
+    render(){
+      const mainEl = document.getElementById("main-container"); // main
+      const sectionContainer = document.createElement("section"); // inner section
+      sectionContainer.setAttribute("id", "section-container")
+      const asideEl = document.createElement("aside");
+      asideEl.setAttribute("id", "side-bar");
+
+      //...
+
+      asideEl.append(contactList);
+      asideEl.append(songInfo);
+      sectionContainer.append(asideEl);
+      mainEl.append(sectionContainer);
+      
+      setTimeout(() => {
+        sectionContainer.classList.add("fade-in");
+        this.titleScroll();
+      }, 1500);
+    }
+  }
+  ```
+
+- What a bout the blue wave? P5.js has a `draw()` that runs continuously. Within the `draw()` method, I used a conditional to continuously run a different render function from different classes. 
+  ```js
+  if(welcomeScreen){
+    blueWave.calculateWave();
+    blueWave.render();
+  } else {
+    blueWave.fadeIn();
+    visualizer.ampRender(amplitude, spectrum);
+  }
+  ```

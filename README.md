@@ -12,7 +12,7 @@ Visible is an audio visualizer that takes properties from audio files, and rende
 
 ### Features ###
 - Audio Visualizer
-- Users are able to choose a song from their files(on development)
+- Users are able to upload a song from their files
 - Full Screen
 
 #### Challenges ####
@@ -22,7 +22,8 @@ Visible is an audio visualizer that takes properties from audio files, and rende
 - Reviewing trigonometry to render the correct shapes.
 
 ### Wireframes ###
-- (comming soon)
+![Welcome-Screen](https://github.com/aparcanapavel/visible/blob/master/assets/welcome.png?raw=true)
+- Upon Visiting the page, users will be greeted with a welcome modal
 
 ### Timeline ###
 #### Day 1 ####

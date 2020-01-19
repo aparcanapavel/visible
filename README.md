@@ -5,10 +5,10 @@ Visible is an audio visualizer that takes properties from audio files, and rende
 [live page](https://pavelaparcana.com/visible/)
 
 ### Technologies and Libraries ###
-- Javscript
-- HTML
-- CSS
-- p5.js Library
+- JavaScript
+- HTML5
+- CSS3
+- p5.js
 
 ### Features ###
 - Audio Visualizer
@@ -35,22 +35,25 @@ Visible is an audio visualizer that takes properties from audio files, and rende
   * View the source code
   * Visit my portfolio page.
 
-### Timeline ###
-#### Day 1 ####
-- Welcome Screen(modal)
-- All HTML written
-- Main Elements CSS
-- Explore APIs
-- Begin Working on rendering Canvas
+![Visualizer-Screen-2](https://github.com/aparcanapavel/visible/blob/master/assets/visualizer2.png?raw=true)
+* Once the user clicks play, The visualizer will begin analyzing the sound and render different line heights.
 
-#### Day 2 ####
-- Canvas rendering based on Audio
-- Add necessary transitions from Home page to the Visualizer page.
-- Continue learning p5.js
-- Begin rendering different shapes
 
-#### Day 3 ####
-- Finish rendering desired shape
-- Finish the transitions. 
-- Add auto text scroll on song name.
-- Host on github
+#### Page Transition ####
+In order to acheive the transition from one page to the next, I had to work with asynchronous timeouts and render methods within class constructors. 
+
+- I had to set event listeners to the two elements that I wanted to cause the trigger between pages, the modal background and the continue button:
+  ```js
+  // #index.js
+  [modalContainer, continueBtn].forEach(element => {
+      element.addEventListener("click", (e) => {
+        blueWave.waveSpeedChange()
+        modalContainer.classList.add('fade');
+        let timer = setTimeout(() => {
+          modalContainer.remove();
+          home = new Home();
+          blueWave.fadeOut();
+        }, 100);
+      })
+    })
+  ```

@@ -30,7 +30,7 @@ Visible is an audio visualizer that takes properties from audio files, and rende
 
 ![Visualizer-Screen](https://github.com/aparcanapavel/visible/blob/master/assets/visualizer.png?raw=true)
 - At the second page, visitors can then:
-  * click play to listen to *Dreams pt. II (feat. Sarah Skinner)[NoCopyrightSounds Release]* by ***Lost Sky***.
+  * Click play to listen to *Dreams pt. II (feat. Sarah Skinner)[NoCopyrightSounds Release]* by ***Lost Sky***.
   * Upload their own music file through the file upload button bellow the play icon.
   * Visit my LinkedIn page
   * View the source code

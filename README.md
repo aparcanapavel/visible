@@ -25,8 +25,9 @@ Visible is an audio visualizer that takes properties from audio files, and rende
 ### Wireframes ###
 ![Welcome-Screen](https://github.com/aparcanapavel/visible/blob/master/assets/welcome.png?raw=true)
 - Upon Visiting the page, users will be greeted with a welcome modal containing instructions as to how to get to the second page.
-- Visitors can look at the source code
+- Visitors can look at the source code.
 - Visitors can view my portfolio site.
+- Rendering a moving sine wave in the background with p5.js.
 
 ![Visualizer-Screen](https://github.com/aparcanapavel/visible/blob/master/assets/visualizer.png?raw=true)
 - At the second page, visitors can then:
@@ -37,7 +38,7 @@ Visible is an audio visualizer that takes properties from audio files, and rende
   * Visit my portfolio page.
 
 ![Visualizer-Screen-2](https://github.com/aparcanapavel/visible/blob/master/assets/visualizer2.png?raw=true)
-* Once the user clicks play, The visualizer will begin analyzing the sound and render different line heights.
+* Once the user clicks play, the visualizer will begin analyzing the sound and render different line heights based on the amplitude.
 
 
 ### Page Transition ###
@@ -89,7 +90,7 @@ In order to acheive the transition from one page to the next, I had to work with
   }
   ```
 
-- What a bout the blue wave? P5.js has a `draw()` function that runs continuously. Within the `draw()` function, I used a conditional to continuously run a different render function from different classes. 
+- What a bout the blue wave? P5.js has a `draw()` function that runs continuously. Within the `draw()` function, I used a conditional to continuously run a different render function from different classes:
   ```js
   // #index.js
   if(welcomeScreen){
@@ -100,3 +101,4 @@ In order to acheive the transition from one page to the next, I had to work with
     visualizer.ampRender(amplitude, spectrum);
   }
   ```
+  - The `welcomeScreen` variable is what allows the application to render the blue sine wave at the intro screen, or the visualizer.

@@ -101,4 +101,19 @@ In order to acheive the transition from one page to the next, I had to work with
     visualizer.ampRender(amplitude, spectrum);
   }
   ```
-  - The `welcomeScreen` variable is what allows the application to render the blue sine wave at the intro screen, or the visualizer.
+  - The `welcomeScreen` variable is what allows the application to render the blue sine wave at the intro screen, or the visualizer. The variable is changed when `waveSpeedChange()` is called. 
+    ```js
+    waveSpeedChange() {
+      this.timer = setInterval(() => {
+        if (this.interval < 60.0) {
+          this.amplitude += 0.18;
+          this.period -= 95.0;
+          this.theta += 0.025;
+          this.interval += 0.18;
+        } else {
+          welcomeScreen = false;
+          clearInterval(this.timer);
+        }
+      }, 0.00001);
+    }
+    ```

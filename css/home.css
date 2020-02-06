@@ -123,6 +123,7 @@
 #import-button:active{
   color: gray;
   font-size: 33px;
+  margin: 1px
 }
 
 #song-upload-input{

@@ -52,11 +52,9 @@ document.onmousemove = function() {
 document.addEventListener("keyup", (e) => {
   if (song && e.keyCode === 32) {
     if (song.isPlaying()) {
-      // song.pause();
       home.pauseSong();
     } else{
       if(welcomeScreen) return;
-      // song.play();
       home.playSong();
     }
   }
@@ -77,9 +75,6 @@ function setup() {
   fft = new p5.FFT(0.7, 128);
   freqOsc = new p5.Oscillator();
 
-  // if(!welcomeScreen){
-  //   angleMode(DEGREES);
-  // }
   fill(79, 244, 255);
   ellipse(0, 0, 200);
 }
@@ -103,5 +98,11 @@ function draw() {
 function windowResized(){
   if(canvasContainer){
     resizeCanvas(windowWidth, windowHeight);
+  }
+}
+
+function handleSongUpload (e) {
+  if (e.keyCode === 13 || e.keyCode === 32) {
+    e.target.click();
   }
 }

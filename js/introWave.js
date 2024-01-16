@@ -23,8 +23,7 @@ class IntroWave {
 
   calculateWave() {
     this.theta += 0.02;
-
-    // console.log("dx", dx)
+    
     let x = this.theta;
     for (let i = 0; i < this.yvalues.length; i++) {
       this.yvalues[i] = sin(x) * this.amplitude;

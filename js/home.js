@@ -17,16 +17,25 @@ class Home{
   titleScroll(){
     const songTitle = document.getElementById("song-title");
     const titleWidth = songTitle.scrollWidth;
+    const asideWidth = songTitle.clientWidth;
+
     this.titleInterval = setInterval(() => {
-      if (this.scroll < titleWidth) {
+      
+      if (this.scroll < (1.35 * (titleWidth - asideWidth))) {
         this.scroll++;
         songTitle.scrollTo(songTitle.scrollLeft + 1, 0);
       } else {
-        this.scroll = 0;
-        this.resetScroll();
+        songTitle.classList.add('fade-out');
         clearInterval(this.titleInterval);
+        
+        setTimeout(() => {
+          this.scroll = 0;
+          this.resetScroll();
+
+          songTitle.classList.remove('fade-out');
+        }, 300);
       }
-    }, 40);
+    }, 50);
   }
 
   setSongData(song){

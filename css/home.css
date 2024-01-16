@@ -44,9 +44,25 @@
 }
 
 #contact-links a {
-  display: inline-block;
-  padding: 5px 0px;
   font-size: 25px;
+}
+
+.hero-icon{
+  display: flex;
+  width: auto;
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.hero-icon svg{
+  display: block;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.hero-icon:focus-visible{
+  outline: 1px solid rgb(79, 244, 255);
 }
 
 #contact-links li:first-child a,
@@ -57,7 +73,7 @@
 #contact-links li {
   margin: 5px 0px;
   text-align: center;
-  background-color: black;
+  position: relative;
 }
 
 #contact-links li span{
@@ -69,7 +85,8 @@
   border-radius: 6px;
   padding: 5px;
   position: absolute;
-  left: 40px;
+  left: 45px;
+  top: 10px;
   border:1px solid gray;
   opacity: 0;
   transition: opacity 0.3s;
@@ -85,7 +102,7 @@
   border-style: solid;
   border-color: transparent whitesmoke transparent transparent;
 }
-
+#contact-links li:focus-within span,
 #contact-links li:hover span{
   visibility: visible;
   opacity: 1;
@@ -126,14 +143,15 @@
   margin: 1px
 }
 
+#play-pause-toggle,
 #song-upload-input{
   visibility: hidden;
+  pointer-events: none;
 }
 
 #import-button{
   display: block;
   font-size: 25px;
-  padding: 5px;
 }
 
 #import-button:active{
